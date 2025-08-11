@@ -1,0 +1,30 @@
+{
+  "name": "start-web-platform-backend",
+  "version": "1.0.0",
+  "description": "搭建 web 平台的脚手架，前后端分离 Ant Design Pro + Koa",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zxffffffff/start-web-platform.git"
+  },
+  "keywords": [
+    "nodejs",
+    "platform",
+    "koa",
+    "web",
+    "starter",
+    "antd-design-pro"
+  ],
+  "author": "zxffffffff",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zxffffffff/start-web-platform/issues"
+  },
+  "homepage": "https://github.com/zxffffffff/start-web-platform#readme",
+  "dependencies": {
+    "koa": "^3.0.1"
+  }
+}
