@@ -8,7 +8,6 @@ const { SECURITY_DATA_DIR } = require('../config/config');
 // 登录令牌文件路径
 const LOGIN_TOKEN_FILE = path.join(SECURITY_DATA_DIR, 'login_token.json');
 
-<<<<<<< HEAD
 // 初始化创建登录令牌文件
 (async () => {
   try {
@@ -20,8 +19,6 @@ const LOGIN_TOKEN_FILE = path.join(SECURITY_DATA_DIR, 'login_token.json');
   }
 })();
 
-=======
->>>>>>> 5de74244762d6efe98a6f8b4a2c23139b217b4ee
 /**
  * 从文件加载登录令牌数据
  * @returns {Array} 令牌数据数组
@@ -54,7 +51,6 @@ function saveLoginTokens(tokens) {
 }
 
 /**
-<<<<<<< HEAD
  * 检查令牌是否存在且有效
  * @param {string} token - 要检查的令牌
  * @param {string} username - 用户名（可选）
@@ -80,15 +76,6 @@ function findToken(token, username, type, ip) {
 
   // 返回第一个匹配项或undefined
   return matchedTokens.length > 0 ? matchedTokens[0] : undefined;
-=======
- * 检查令牌是否存在
- * @param {string} token - 要检查的令牌
- * @returns {Object|undefined} 找到的令牌数据或undefined
- */
-function findToken(token) {
-  const tokens = loadLoginTokens();
-  return tokens.find(t => t.token === token);
->>>>>>> 5de74244762d6efe98a6f8b4a2c23139b217b4ee
 }
 
 /**
@@ -96,7 +83,6 @@ function findToken(token) {
  * @param {Object} tokenData - 令牌数据
  */
 function addLoginToken(tokenData) {
-<<<<<<< HEAD
   let tokens = loadLoginTokens();
 
   // 移除相同username和type的旧token
@@ -104,9 +90,6 @@ function addLoginToken(tokenData) {
     !(t.username === tokenData.username && t.type === tokenData.type)
   );
 
-=======
-  const tokens = loadLoginTokens();
->>>>>>> 5de74244762d6efe98a6f8b4a2c23139b217b4ee
   tokens.push(tokenData);
   saveLoginTokens(tokens);
 }
@@ -124,18 +107,11 @@ function removeLoginToken(token) {
 /**
  * 生成一个新的token
  * @param {string} username - 用户名
-<<<<<<< HEAD
  * @param {string} type - 登录类型
  * @param {string} ip - IP地址
  * @returns {string} 生成的token
  */
 function generateToken(username, type, ip) {
-=======
- * @param {string} ip - IP地址
- * @returns {string} 生成的token
- */
-function generateToken(username, ip) {
->>>>>>> 5de74244762d6efe98a6f8b4a2c23139b217b4ee
   // 生成UUID作为token
   const token = uuidv4();
 
@@ -143,10 +119,7 @@ function generateToken(username, ip) {
   addLoginToken({
     token: token,
     username: username,
-<<<<<<< HEAD
     type: type,
-=======
->>>>>>> 5de74244762d6efe98a6f8b4a2c23139b217b4ee
     ip: ip
   });
 

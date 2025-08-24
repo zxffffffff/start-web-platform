@@ -59,16 +59,11 @@ function authMiddleware(options = {}) {
       return await next();
     }
 
-<<<<<<< HEAD
     // 获取客户端IP地址
     const clientIP = ctx.request.ip || ctx.request.connection.remoteAddress || 'unknown';
 
     // 验证token是否存在且有效（username为可选参数）
     const tokenData = findToken(token, null, null, clientIP);
-=======
-    // 验证token是否存在且有效
-    const tokenData = findToken(token);
->>>>>>> 5de74244762d6efe98a6f8b4a2c23139b217b4ee
     if (!tokenData) {
       ctx.status = 401;
       ctx.body = {
@@ -83,12 +78,8 @@ function authMiddleware(options = {}) {
     ctx.state.user = {
       username: tokenData.username,
       token: tokenData.token,
-<<<<<<< HEAD
       ip: tokenData.ip,
       type: tokenData.type
-=======
-      ip: tokenData.ip
->>>>>>> 5de74244762d6efe98a6f8b4a2c23139b217b4ee
     };
 
     // token有效，继续执行后续中间件
