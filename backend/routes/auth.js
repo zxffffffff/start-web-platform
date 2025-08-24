@@ -1,8 +1,4 @@
 const Router = require('@koa/router');
-<<<<<<< HEAD
-=======
-const { v4: uuidv4 } = require('uuid');
->>>>>>> 5de74244762d6efe98a6f8b4a2c23139b217b4ee
 const fs = require('fs').promises;
 const path = require('path');
 const { decryptWithPrivateKey } = require('../utils/rsa-utils');
@@ -12,11 +8,7 @@ const { authenticateWithLDAP } = require('../services/ldap-service');
 const { SECURITY_DATA_DIR, LDAP_ENABLE } = require('../config/config');
 
 // 引入认证服务
-<<<<<<< HEAD
 const { findToken, addLoginToken, removeLoginToken, generateToken } = require('../services/auth-service');
-=======
-const { findToken, generateToken } = require('../services/auth-service');
->>>>>>> 5de74244762d6efe98a6f8b4a2c23139b217b4ee
 
 // 创建路由实例
 const router = new Router();
@@ -30,60 +22,6 @@ const users = {
 // 用户权限白名单配置
 // adminUsers 包含具有管理员权限的用户名
 const adminUsers = new Set(['admin']);
-<<<<<<< HEAD
-=======
-
-// 登录令牌文件路径
-const LOGIN_TOKEN_FILE = path.join(SECURITY_DATA_DIR, 'login_token.json');
-
-// 初始化创建登录令牌文件
-(async () => {
-  try {
-    // 确保登录令牌文件存在
-    await fs.access(LOGIN_TOKEN_FILE);
-  } catch (err) {
-    // 文件不存在，创建空数组的文件
-    await fs.writeFile(LOGIN_TOKEN_FILE, JSON.stringify([], null, 2), 'utf8');
-  }
-})();
-
-/**
- * 从文件加载登录令牌数据
- * @returns {Promise<Array>} 令牌数据数组
- */
-async function loadLoginTokens() {
-  try {
-    const data = await fs.readFile(LOGIN_TOKEN_FILE, 'utf8');
-    return JSON.parse(data);
-  } catch (err) {
-    // 如果文件不存在或解析失败，返回空数组
-    return [];
-  }
-}
-
-/**
- * 保存登录令牌数据到文件
- * @param {Array} tokens - 令牌数据数组
- */
-async function saveLoginTokens(tokens) {
-  try {
-    await fs.writeFile(LOGIN_TOKEN_FILE, JSON.stringify(tokens, null, 2));
-  } catch (err) {
-    console.error('保存登录令牌数据失败:', err);
-  }
-}
-
-/**
- * 删除登录令牌数据
- * @param {string} token - 要删除的令牌
- */
-async function removeLoginToken(token) {
-  let tokens = await loadLoginTokens();
-  tokens = tokens.filter(t => t.token !== token);
-  await saveLoginTokens(tokens);
-}
-
->>>>>>> 5de74244762d6efe98a6f8b4a2c23139b217b4ee
 /**
  * 根据用户名获取用户权限
  * @param {string} username - 用户名
@@ -189,13 +127,9 @@ router.post('/api/login/account', async (ctx) => {
     const access = getUserAccess(username);
 
     // 生成token
-<<<<<<< HEAD
     const token = generateToken(username, type, clientIP);
 
     addLoginToken({ username, token, type, ip: clientIP })
-=======
-    const token = generateToken(username, clientIP);
->>>>>>> 5de74244762d6efe98a6f8b4a2c23139b217b4ee
 
     // 登录成功
     ctx.status = 200;
@@ -236,17 +170,11 @@ router.post('/api/login/account', async (ctx) => {
  */
 router.get('/api/currentUser', async (ctx) => {
   const token = ctx.query.token;
-<<<<<<< HEAD
   const type = ctx.query.type || 'account';
   const clientIP = ctx.request.ip || ctx.request.connection.remoteAddress || 'unknown';
 
   // 检查token是否存在且有效（username为可选参数）
   const tokenData = findToken(token, null, type, clientIP);
-=======
-
-  // 检查token是否存在且有效
-  const tokenData = findToken(token);
->>>>>>> 5de74244762d6efe98a6f8b4a2c23139b217b4ee
   if (token && tokenData) {
     const username = tokenData.username;
 
@@ -293,17 +221,11 @@ router.get('/api/currentUser', async (ctx) => {
  */
 router.post('/api/login/outLogin', async (ctx) => {
   const token = ctx.query.token;
-<<<<<<< HEAD
   const type = ctx.query.type || 'account';
   const clientIP = ctx.request.ip || ctx.request.connection.remoteAddress || 'unknown';
 
   // 检查token是否存在且有效（username为可选参数）
   const tokenData = findToken(token, null, type, clientIP);
-=======
-
-  // 检查token是否存在
-  const tokenData = findToken(token);
->>>>>>> 5de74244762d6efe98a6f8b4a2c23139b217b4ee
   if (token && tokenData) {
     // 删除登录令牌
     await removeLoginToken(token);

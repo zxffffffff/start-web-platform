@@ -2,7 +2,6 @@
 
 搭建 web 平台的脚手架，前后端分离 Ant Design Pro + Koa
 
-<<<<<<< HEAD
 ## 接口规范（RESTful API 风格）
 
 ### 请求规范
@@ -64,16 +63,10 @@ HTTP方法和URL格式：
 }
 ```
 
-=======
->>>>>>> 5de74244762d6efe98a6f8b4a2c23139b217b4ee
 ## 提交前检查
 
 ```text
 请检查当前代码中是否包含以下隐私泄露风险：
-<<<<<<< HEAD
-=======
-
->>>>>>> 5de74244762d6efe98a6f8b4a2c23139b217b4ee
 - 明文密码、密钥、token、accessKey、secretKey、privateKey、证书等敏感凭据；
 - 真实 IP、域名、URL、邮箱、手机号、身份证号等个人信息；
 - 日志、测试、mock 数据中包含真实用户数据或敏感字段；

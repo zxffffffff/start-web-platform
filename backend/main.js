@@ -10,15 +10,7 @@ const app = new Koa();
 const router = new Router();
 
 // 从统一配置文件导入配置
-<<<<<<< HEAD
 const { LOG_DIR, LISTEN_IP, LISTEN_PORT } = require('./config/config');
-=======
-const { DATA_DIR, LOG_DIR, ensureDirectoriesExist, PORT, IP } = require('./config/config');
-(async () => {
-  // 确保必要的目录存在
-  await ensureDirectoriesExist();
-})();
->>>>>>> 5de74244762d6efe98a6f8b4a2c23139b217b4ee
 
 // 配置 koa-body 中间件
 app.use(koaBody({
@@ -109,15 +101,9 @@ const frontendBuildPath = path.join(__dirname, '../dist');
 const authRouter = require('./routes/auth');
 app.use(authRouter.routes()).use(authRouter.allowedMethods());
 
-<<<<<<< HEAD
 // 引入数据管理路由
 const datasRouter = require('./routes/datas');
 app.use(datasRouter.routes()).use(datasRouter.allowedMethods());
-=======
-// 引入文件路由
-const filesRouter = require('./routes/files');
-app.use(filesRouter.routes()).use(filesRouter.allowedMethods());
->>>>>>> 5de74244762d6efe98a6f8b4a2c23139b217b4ee
 
 // 导出应用实例供测试使用
 module.exports = app;
@@ -125,20 +111,13 @@ module.exports = app;
 // 仅在直接运行此文件时启动服务器
 if (require.main === module) {
   const serviceName = require('./package.json').name;
-<<<<<<< HEAD
   const server = app.listen(LISTEN_PORT, LISTEN_IP, () => {
     console.log(`================================================================= `);
     console.log(`${serviceName} 服务正在运行于 http://${LISTEN_IP}:${LISTEN_PORT}`);
-=======
-  const server = app.listen(PORT, IP, () => {
-    console.log(`================================================================= `);
-    console.log(`${serviceName} 服务正在运行于 http://${IP}:${PORT}`);
->>>>>>> 5de74244762d6efe98a6f8b4a2c23139b217b4ee
     console.log(` * 认证API接口：`);
     console.log(` * - POST   /api/login/account (用户登录)`);
     console.log(` * - POST   /api/login/outLogin (用户登出)`);
     console.log(` * - GET    /api/currentUser (检查用户登录状态)`);
-<<<<<<< HEAD
     console.log(` * 数据管理API接口：`);
     console.log(` * - GET    /api/datas (获取数据列表)`);
     console.log(` * - GET    /api/datas/:id (获取单个数据)`);
@@ -146,14 +125,6 @@ if (require.main === module) {
     console.log(` * - PUT    /api/datas/:id (创建或更新数据)`);
     console.log(` * - PATCH  /api/datas/:id (部分更新数据)`);
     console.log(` * - DELETE /api/datas/:id (删除数据)`);
-=======
-    console.log(` * 文件服务API接口：`);
-    console.log(` * - GET    /api/files (获取文件列表)`);
-    console.log(` * - GET    /api/files/:filename (读取文件)`);
-    console.log(` * - POST   /api/files/:filename (创建文件)`);
-    console.log(` * - PUT    /api/files/:filename (更新文件)`);
-    console.log(` * - DELETE /api/files/:filename (删除文件)`);
->>>>>>> 5de74244762d6efe98a6f8b4a2c23139b217b4ee
     console.log(`=================================================================`);
   });
 

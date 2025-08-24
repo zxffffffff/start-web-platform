@@ -4,7 +4,6 @@
   "description": "搭建 web 平台的脚手架，前后端分离 Ant Design Pro + Koa",
   "main": "main.js",
   "scripts": {
-<<<<<<< HEAD
     "start": "node main.js",
     "dev": "nodemon main.js",
     "test": "mocha --require ./test-setup.js tests/**/*.test.js",
@@ -13,12 +12,6 @@
     "dev2": "nodemon --security-revert=CVE-2023-46809 main.js",
     "test2": "mocha --node-option security-revert=CVE-2023-46809 --require ./test-setup.js tests/**/*.test.js",
     "generate-rsa-keys2": "node --security-revert=CVE-2023-46809 scripts/generate-rsa-keys.js"
-=======
-    "start": "node --security-revert=CVE-2023-46809 main.js",
-    "dev": "nodemon --security-revert=CVE-2023-46809 main.js",
-    "test": "mocha --node-option security-revert=CVE-2023-46809 --require ./test-setup.js tests/**/*.test.js",
-    "generate-rsa-keys": "node --security-revert=CVE-2023-46809 scripts/generate-rsa-keys.js"
->>>>>>> 5de74244762d6efe98a6f8b4a2c23139b217b4ee
   },
   "repository": {
     "type": "git",

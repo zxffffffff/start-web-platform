@@ -28,11 +28,7 @@ describe('Auth API', function () {
 
   before(function () {
     // 生成测试token
-<<<<<<< HEAD
     testToken = generateToken('admin', 'account', '127.0.0.1');
-=======
-    testToken = generateToken('admin', '127.0.0.1');
->>>>>>> 5de74244762d6efe98a6f8b4a2c23139b217b4ee
   });
 
   beforeEach(function () {
@@ -181,7 +177,6 @@ describe('Auth API', function () {
   });
 
   describe('GET /api/currentUser', function () {
-<<<<<<< HEAD
     let validToken;
     
     before(function () {
@@ -193,12 +188,6 @@ describe('Auth API', function () {
       request(app.callback())
         .get('/api/currentUser')
         .query({ token: validToken, type: 'account' })
-=======
-    it('应该返回有效的当前用户信息', function (done) {
-      request(app.callback())
-        .get('/api/currentUser')
-        .query({ token: testToken })
->>>>>>> 5de74244762d6efe98a6f8b4a2c23139b217b4ee
         .expect(200)
         .end(function (err, res) {
           if (err) return done(err);
@@ -214,11 +203,7 @@ describe('Auth API', function () {
     it('应该拒绝无效token', function (done) {
       request(app.callback())
         .get('/api/currentUser')
-<<<<<<< HEAD
         .query({ token: 'invalid-token', type: 'account' })
-=======
-        .query({ token: 'invalid-token' })
->>>>>>> 5de74244762d6efe98a6f8b4a2c23139b217b4ee
         .expect(401)
         .end(function (err, res) {
           if (err) return done(err);
@@ -234,10 +219,7 @@ describe('Auth API', function () {
     it('应该拒绝缺少token', function (done) {
       request(app.callback())
         .get('/api/currentUser')
-<<<<<<< HEAD
         .query({ type: 'account' })
-=======
->>>>>>> 5de74244762d6efe98a6f8b4a2c23139b217b4ee
         .expect(401)
         .end(function (err, res) {
           if (err) return done(err);
@@ -249,7 +231,6 @@ describe('Auth API', function () {
           done();
         });
     });
-<<<<<<< HEAD
     
     it('应该拒绝username不匹配', function (done) {
       // 这个测试用例不再适用，因为username已经不是必需参数
@@ -280,15 +261,6 @@ describe('Auth API', function () {
       request(app.callback())
         .post('/api/login/outLogin')
         .query({ token: validToken, type: 'account' })
-=======
-  });
-
-  describe('POST /api/login/outLogin', function () {
-    it('应该成功登出有效token', function (done) {
-      request(app.callback())
-        .post('/api/login/outLogin')
-        .query({ token: testToken })
->>>>>>> 5de74244762d6efe98a6f8b4a2c23139b217b4ee
         .expect(200)
         .end(function (err, res) {
           if (err) return done(err);
@@ -302,11 +274,7 @@ describe('Auth API', function () {
     it('应该拒绝无效token的登出请求', function (done) {
       request(app.callback())
         .post('/api/login/outLogin')
-<<<<<<< HEAD
         .query({ token: 'invalid-token', type: 'account' })
-=======
-        .query({ token: 'invalid-token' })
->>>>>>> 5de74244762d6efe98a6f8b4a2c23139b217b4ee
         .expect(401)
         .end(function (err, res) {
           if (err) return done(err);
