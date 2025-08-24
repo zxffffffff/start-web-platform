@@ -83,9 +83,9 @@ export default defineConfig({
    * @name layout 插件
    * @doc https://umijs.org/docs/max/layout-menu
    */
-  title: 'Ant Design Pro',
+  title: 'start-web-platform',
   layout: {
-    locale: true,
+    locale: false, // 禁用layout的国际化功能
     ...defaultSettings,
   },
   /**
@@ -106,7 +106,7 @@ export default defineConfig({
     default: 'zh-CN',
     antd: true,
     // default true, when it is true, will use `navigator.language` overwrite default
-    baseNavigator: true,
+    baseNavigator: false, // 禁用浏览器语言检测
   },
   /**
    * @name antd 插件

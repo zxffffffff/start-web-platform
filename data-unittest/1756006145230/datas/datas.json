@@ -1,0 +1,22 @@
+{
+  "328b30f6-5466-4146-9835-a19ab4a7854a": {
+    "name": "test1",
+    "value": "test value 1"
+  },
+  "e053d2d4-0e37-42d3-8a9a-4f0f1f75e53a": {
+    "name": "test2",
+    "value": "test value 2"
+  },
+  "47d03271-b3a3-4f10-a9c6-1b4c206633aa": {
+    "name": "test3",
+    "value": "test value 3"
+  },
+  "ea5bd966-bf0e-4bd9-b662-3159c78fe2cd": {
+    "name": "test4",
+    "value": "test value 4"
+  },
+  "ccc6a696-4f28-4296-8331-591ea224ac95": {
+    "name": "test5",
+    "value": "test value 5"
+  }
+}

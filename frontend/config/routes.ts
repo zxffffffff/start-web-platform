@@ -46,10 +46,10 @@ export default [
     ],
   },
   {
-    name: 'list.table-list',
-    icon: 'table',
-    path: '/list',
-    component: './table-list',
+    name: 'datas',
+    icon: 'file',
+    path: '/datas',
+    component: './datas',
   },
   {
     path: '/',

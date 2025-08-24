@@ -16,6 +16,17 @@ import defaultSettings from '../config/defaultSettings';
 import { errorConfig } from './requestErrorConfig';
 import '@ant-design/v5-patch-for-react-19';
 
+// 禁用 React Intl 警告
+if (process.env.NODE_ENV !== 'development') {
+  const consoleWarn = console.warn;
+  console.warn = (...args) => {
+    if (args[0] && args[0].includes && args[0].includes('[React Intl]')) {
+      return;
+    }
+    consoleWarn(...args);
+  };
+}
+
 const isDev = process.env.NODE_ENV === 'development';
 const loginPath = '/user/login';
 
@@ -150,6 +161,6 @@ export const layout: RunTimeLayoutConfig = ({
  * @doc https://umijs.org/docs/max/request#配置
  */
 export const request: RequestConfig = {
-  baseURL: 'https://proapi.azurewebsites.net',
+  baseURL: 'http://localhost:3333',
   ...errorConfig,
 };
